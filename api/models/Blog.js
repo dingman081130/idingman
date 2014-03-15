@@ -1,0 +1,27 @@
+/**
+ * Blog
+ *
+ * @module      :: Model
+ * @description :: A short summary of how this model works and what it represents.
+ * @docs		:: http://sailsjs.org/#!documentation/models
+ */
+
+module.exports = {
+
+  attributes: {
+  	
+  	/* e.g.
+  	nickname: 'string'
+  	*/
+  	title : {
+  		'type' : 'string',
+  		'maxLength' : 64,
+  		'minLength' : 4,
+  		'required' : true
+   	},
+  	content : 'STRING',
+  	publishTime : 'DATE',
+    
+  }
+
+};
