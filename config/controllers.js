@@ -82,6 +82,9 @@ module.exports.controllers = {
      *
      * `rest` blueprints are enabled by default, and suitable for a production scenario.
      */
+    // '/blog/:id?' : {
+
+    // },
     rest: true,
 
 

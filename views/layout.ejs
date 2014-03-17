@@ -6,7 +6,8 @@
         your `sails.config.appName` to show that you can inject data into layouts
         exactly the same way as with your other view templates.
     -->
-    <title><%- title %></title>
+    <!--title><%- title %></title-->
+    <title>Trip 2014</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -21,6 +22,8 @@
       
     -->
 
+    <link type="text/css" href='/styles/fonts.css' rel='stylesheet'/>
+    <link type="text/css" href='/styles/main.css' rel='stylesheet'/>
     <!--
 
       Support for LESS included by default
@@ -36,6 +39,16 @@
   </head>
 
   <body>
+
+    <div class="header">
+        <div class="container clearfix">
+            <a href="#"><img class="logo" src="/images/logo.png" /></a>
+            <a class="navi-item" href="#">Story</a>
+            <a class="navi-item" href="#">Photo</a>
+            <a class="navi-item" href="#">Path</a>
+            <a class="navi-item" href="#">Home</a>
+        </div>
+    </div>
 
     <!-- Include the view file for the current controller/route -->
     <%- body %>
@@ -91,6 +104,17 @@
       http://sailsjs.org/#!documentation/asset-management
 
     -->
+
+    <div class="footer">
+        <div class="container clearfix">
+            <p class="how_to_contact_us">How to contact us</p>
+            <img class="qr-code" src="/images/qr1.png"/>
+            <textarea type="text" name="fname" placeholder="Leave your message here and type enter..."></textarea>
+            <span class="mail_value">trip2014@gmail.com</span>
+            <span class="mail_label">Mail&nbsp;:&nbsp;</span>
+            <img class="voice" src="/images/voice.png"/>
+        </div>
+    </div>
 
     </body>
 </html>

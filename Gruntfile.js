@@ -123,16 +123,16 @@ module.exports = function (grunt) {
 
   // Get path to core grunt dependencies from Sails
   var depsPath = grunt.option('gdsrc') || 'node_modules/sails/node_modules';
-  grunt.loadTasks(depsPath + '/grunt-contrib-clean/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-copy/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-concat/tasks');
-  grunt.loadTasks(depsPath + '/grunt-sails-linker/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-jst/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-watch/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-uglify/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
-  grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-clean/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-copy/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-concat/tasks');
+    grunt.loadTasks(depsPath + '/grunt-sails-linker/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-jst/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-watch/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-uglify/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
+    grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
 
   // Project configuration.
   grunt.initConfig({
@@ -144,7 +144,7 @@ module.exports = function (grunt) {
           {
           expand: true,
           cwd: './assets',
-          src: ['**/*.!(coffee)'],
+          src: ['**/*'],
           dest: '.tmp/public'
         }
         ]
@@ -162,7 +162,7 @@ module.exports = function (grunt) {
     },
 
     clean: {
-      dev: ['.tmp/public/**'],
+      dev: ['.tmp/public'],
       build: ['www']
     },
 
@@ -396,19 +396,20 @@ module.exports = function (grunt) {
     },
 
     watch: {
+      gruntfile : {
+        files : ['Gruntfile.js'],
+        tasks : ['build']
+      },
       api: {
-
-        // API files to watch:
+        //API files to watch:
         files: ['api/**/*']
       },
       assets: {
-
         // Assets to watch:
         files: ['assets/**/*'],
-
         // When assets are changed:
         tasks: ['compileAssets', 'linkAssets']
-      }
+      },
     }
   });
 
@@ -467,18 +468,18 @@ module.exports = function (grunt) {
   ]);
 
   // When API files are changed:
-  // grunt.event.on('watch', function(action, filepath) {
-  //   grunt.log.writeln(filepath + ' has ' + action);
+  //grunt.event.on('watch', function(action, filepath) {
+    //grunt.log.writeln(filepath + ' has ' + action);
 
   //   // Send a request to a development-only endpoint on the server
   //   // which will reuptake the file that was changed.
-  //   var baseurl = grunt.option('baseurl');
-  //   var gruntSignalRoute = grunt.option('signalpath');
-  //   var url = baseurl + gruntSignalRoute + '?action=' + action + '&filepath=' + filepath;
-
-  //   require('http').get(url)
-  //   .on('error', function(e) {
-  //     console.error(filepath + ' has ' + action + ', but could not signal the Sails.js server: ' + e.message);
-  //   });
-  // });
+    //var baseurl = grunt.option('baseurl');
+    //var baseurl = 'http://localhost:1337/';
+    //console.log('------- ' + baseurl + '+++');
+    //var gruntSignalRoute = grunt.option('signalpath');
+    //var url = baseurl + gruntSignalRoute + '?action=' + action + '&filepath=' + filepath;console.log(url);
+    ////require('http').get(url).on('error', function(e) {
+        ////console.error(filepath + ' has ' + action + ', but could not signal the Sails.js server: ' + e.message);
+        //});
+    //});
 };
